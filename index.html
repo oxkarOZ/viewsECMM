@@ -20,9 +20,28 @@
     <link rel="stylesheet" media="screen" href="css/vendor.min.css">
     <!-- Main Template Styles-->
     <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script>
     <!-- Modernizr-->
     <script src="js/modernizr.min.js"></script>
     <script src="js/index/indexCoco.js"></script>
+
+    <style type="text/css">
+      
+      #owl-demo .item{
+        background: #a1def8;
+        padding: 30px 0px;
+        display: block;
+        margin: 5px;
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-align: center;
+      }
+
+    </style>
   </head>
   <!-- Body-->
   <body>
@@ -326,46 +345,10 @@
     <!-- Page Content-->
     <!-- Main Slider-->
     <section class="hero-slider" style="background-image: url(img/hero-slider/main-bg.jpg);">
-      <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
-        <div class="item">
-          <div class="container padding-top-3x">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-                <div class="from-bottom"><img class="d-inline-block w-150 mb-4" src="img/hero-slider/logoRev.jpg" alt="Puma">
-                  <div class="h2 text-body mb-2 pt-1">Google Home - Smart Speaker</div>
-                  <div class="h2 text-body mb-4 pb-1">starting at <span class="text-medium">$129.00</span></div>
-                </div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">View Offers&nbsp;<i class="icon-arrow-right"></i></a>
-              </div>
-              <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/02.png" alt="Puma Backpack"></div>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="container padding-top-3x">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-                <div class="from-bottom"><img class="d-inline-block w-150 mb-3" src="img/hero-slider/logoRev.jpg" alt="Sony">
-                  <div class="h2 text-body mb-2 pt-1">Modern Powerful Laptop</div>
-                  <div class="h2 text-body mb-4 pb-1">for only <span class="text-medium">$1,459.99</span></div>
-                </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now&nbsp;<i class="icon-arrow-right"></i></a>
-              </div>
-              <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/01.png" alt="Chuck Taylor All Star II"></div>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="container padding-top-3x">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-                <div class="from-bottom"><img class="d-inline-block w-150 mb-3" src="img/hero-slider/logoRev.jpg" alt="Motorola">
-                  <div class="h2 text-body mb-2 pt-1">Beats Studio by Dr.Dre</div>
-                  <div class="h2 text-body mb-4 pb-1">for only <span class="text-medium">$349.50</span></div>
-                </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now&nbsp;<i class="icon-arrow-right"></i></a>
-              </div>
-              <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/03.png" alt="Moto 360"></div>
-            </div>
-          </div>
-        </div>
+      <div id="divSlide">
+        
+        
+        
       </div>
     </section>
     <!-- Top Categories/Deals-->
@@ -374,52 +357,10 @@
     <!-- Featured Products-->
     <section class="container padding-top-3x padding-bottom-2x mb-2">
       <h2 class="h3 pb-3 text-center">Featured Products</h2>
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product-card mb-30">
-            <div class="product-badge bg-danger">Sale</div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/01.jpg" alt="Product"></a>
-            <div class="product-card-body">
-              <div class="product-category"><a href="#">Smart home</a></div>
-              <h3 class="product-title"><a href="shop-single.html">Echo Dot (2nd Generation)</a></h3>
-              <h4 class="product-price">
-                <del>$62.00</del>$49.99
-              </h4>
-            </div>
-            <div class="product-button-group"><a class="product-button btn-wishlist" href="#"><i class="icon-heart"></i><span>Wishlist</span></a><a class="product-button btn-compare" href="#"><i class="icon-repeat"></i><span>Compare</span></a><a class="product-button" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-shopping-cart"></i><span>To Cart</span></a></div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product-card mb-30">
-              <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
-              </div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/02.jpg" alt="Product"></a>
-            <div class="product-card-body">
-              <div class="product-category"><a href="#">Photo cameras</a></div>
-              <h3 class="product-title"><a href="shop-single.html">Aberg Best 21 Mega Pixels</a></h3>
-              <h4 class="product-price">$35.00</h4>
-            </div>
-            <div class="product-button-group"><a class="product-button btn-wishlist" href="#"><i class="icon-heart"></i><span>Wishlist</span></a><a class="product-button btn-compare" href="#"><i class="icon-repeat"></i><span>Compare</span></a><a class="product-button" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-shopping-cart"></i><span>To Cart</span></a></div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product-card mb-30"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/05.jpg" alt="Product"></a>
-            <div class="product-card-body">
-              <div class="product-category"><a href="#">Headphones</a></div>
-              <h3 class="product-title"><a href="shop-single.html">Zeus Bluetooth Headphones</a></h3>
-              <h4 class="product-price">$28.99</h4>
-            </div>
-            <div class="product-button-group"><a class="product-button btn-wishlist" href="#"><i class="icon-heart"></i><span>Wishlist</span></a><a class="product-button btn-compare" href="#"><i class="icon-repeat"></i><span>Compare</span></a><a class="product-button" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-shopping-cart"></i><span>To Cart</span></a></div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product-card mb-30"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/07.jpg" alt="Product"></a>
-            <div class="product-card-body">
-              <div class="product-category"><a href="#">Smartphones</a></div>
-              <h3 class="product-title"><a href="shop-single.html">Samsung Galaxy S9+</a></h3>
-              <h4 class="product-price">$839.99</h4>
-            </div>
-            <div class="product-button-group"><a class="product-button btn-wishlist" href="#"><i class="icon-heart"></i><span>Wishlist</span></a><a class="product-button btn-compare" href="#"><i class="icon-repeat"></i><span>Compare</span></a><a class="product-button" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-shopping-cart"></i><span>To Cart</span></a></div>
-          </div>
-        </div>
+      <div class="row" id="rowFeatured">
+        
+
+
       </div>
       <div class="text-center"><a class="btn btn-outline-secondary" href="shop-grid-ls.html">View All Products</a></div>
     </section>
@@ -526,8 +467,5 @@
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="icon-chevron-up"></i></a>
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/scripts.min.js"></script>
   </body>
 </html>
