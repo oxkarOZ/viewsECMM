@@ -50,7 +50,7 @@ function loadFeatured(cardData){
 function cargaSlide(){
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/featured/all',
+		url: 'http://localhost:8080/banner/all',
 		success: function(respuesta) {
 			slideProducts = respuesta;
 			slideProducts.forEach(function(item, i) {
