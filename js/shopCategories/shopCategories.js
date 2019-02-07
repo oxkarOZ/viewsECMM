@@ -65,7 +65,8 @@ function loadCategoryCard(cardData){
         '</div></a>',
         '<div class="card-body text-center">',
         '<h4 class="h6 card-title">'+cardData.categoryName+'</h4>',
-        '<p class="text-xs text-muted">Starting from &nbsp;<span class="card-label">$ '+cardData.startPrice+'</span></p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>',
+        '<form id="categoryForm" action="shop-grid-ls.html" method="post"><input type="hidden" id="category" name="category" value="2" /></form>',
+        '<p class="text-xs text-muted">Starting from &nbsp;<span class="card-label">$ '+cardData.startPrice+'</span></p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ls.html?category='+cardData.categoryId+'">View Products</a>',
         '</div>',
         '</div>',
         '</div>'

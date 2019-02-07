@@ -5,13 +5,15 @@ var productCards = $();
 
 
 $(function() {
+	var categoryId = getUrlParameter('category');
 	loadCategory();
-	loadProduct();
+	loadProduct(categoryId);
 });
 
 
 
 function loadCategory(){
+	categoryCards= $();
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/category/allCount',
@@ -30,15 +32,17 @@ function loadCategory(){
 }
 
 function loadProduct(idCategory){
-	if(!idCategory){
-		idCategory=0;
+	productCards = $();
+	var url = 'http://localhost:8080/product/all';
+	if(idCategory){
+		url = 'http://localhost:8080/product/all/'+idCategory;
 	}
 	$('#productGrid').empty();
 	products={};
 	productCards = $();
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/product/all/'+idCategory,
+		url: url,
 		success: function(respuesta) {
 			product = respuesta;
 			product.forEach(function(item, i) {
@@ -55,7 +59,7 @@ function loadProduct(idCategory){
 
 function loadCategoryCard(cardData){
 	var categoryCardTemplate = [
-		'<li><a href="#" onclick="loadProduct('+cardData.categoryId+');" >'+cardData.categoryName+'</a><span>('+cardData.quantity+')</span></li>'
+		'<li><a style="cursor:pointer;" onclick="loadProduct('+cardData.categoryId+');" >'+cardData.categoryName+'</a><span>('+cardData.quantity+')</span></li>'
 	];
 	return $(categoryCardTemplate.join(''));
 }
