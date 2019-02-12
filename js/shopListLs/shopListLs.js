@@ -66,7 +66,7 @@ function loadCategoryCard(cardData){
 function loadProductCard(cardData){
 	var productCardTemplate = [
 		'<div class="product-card product-list mb-30">',
-							'<a class="product-thumb" href="shop-single.html">',
+							'<a class="product-thumb" href="shop-single.html?product='+cardData.productId+'">',
 							'<div class="product-badge bg-danger"><!-- <div class="product-badge bg-secondary border-default text-body"> -->',
 							'	Sale <!-- Out of stock -->',
 							'</div><img src="'+cardData.images[0].imageUrl+'" alt="'+cardData.productTitle+'"></a>',
@@ -82,7 +82,7 @@ function loadProductCard(cardData){
 							'		<div class="product-category">',
 							'			<a href="#">'+cardData.category.categoryName+'</a>',
 							'		</div>',
-							'		<h3 class="product-title"><a href="shop-single.html">'+cardData.productTitle+'</a></h3>',
+							'		<h3 class="product-title"><a href="shop-single.html?product='+cardData.productId+'">'+cardData.productTitle+'</a></h3>',
 							'		<h4 class="product-price">$ '+cardData.productPrice+'</h4>',
 							'		<p class="text-sm text-muted hidden-xs-down my-1">',
 							''+cardData.productDescription+'',
