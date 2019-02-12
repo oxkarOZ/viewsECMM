@@ -113,7 +113,9 @@ function deleteCartProduct(product){
 		var cocoCart = localStorage.getItem('cocoCart');
 		var productList = JSON.parse(cocoCart);
 		for (var key in productList) {
-			productList.splice(key, 1);
+			if(product === productList[key].product.productId){
+				productList.splice(key, 1);
+			}
 		}
 		if(productList.length == 0){
 			localStorage.clear();
