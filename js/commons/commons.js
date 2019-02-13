@@ -107,6 +107,13 @@ function clearCart(){
 	
 }
 
+function cleanCartLocalStorage(){
+	localStorage.removeItem("cocoCart");
+	
+}
+
+
+
 function deleteCartProduct(product){
 	//$('#entry-'+product).remove();
 	if(localStorage.length){
