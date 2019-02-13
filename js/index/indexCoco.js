@@ -66,22 +66,4 @@ function loadSlide(cardData) {
 	return $(cardFeaturedTemplate.join(''));
 }
 
-function loadCartProducts(){
-	
-	clearCart();
-	cartCount = 0;
-	cartData = $();
-	cartCards= $();
-	cartAmount = 0;
-	cartData = getCart();
-	if(cartData){
-		cartData.forEach(function(item, i){
-			cartCards = cartCards.add(loadCart(item));
-		});
-		$('#cartProducts').prepend(cartCards);
-		$('#cartSubTotal').append('<span id="subtotal"> $'+cartAmount+'</span>');
-		$('#cartCountLabel').append('<span id="cartCount">'+cartCount+'</span>');
-		
-		
-	}
-}
+
