@@ -107,15 +107,12 @@ function clearCart(){
 	
 }
 
-<<<<<<< HEAD
 function cleanCartLocalStorage(){
 	localStorage.removeItem("cocoCart");
 	
 }
 
 
-
-=======
 function loadCartProducts(){
 	
 	clearCart();
@@ -136,7 +133,6 @@ function loadCartProducts(){
 	}
 }
 
->>>>>>> 43950baa27bf4d9d80008f31d78fbd3c9bd23977
 function deleteCartProduct(product){
 	//$('#entry-'+product).remove();
 	if(localStorage.length){

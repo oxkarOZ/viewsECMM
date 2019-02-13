@@ -68,6 +68,7 @@ function loadSlide(cardData) {
 }
 
 
+<<<<<<< HEAD
 
 
 function startCountDown(){
@@ -107,3 +108,5 @@ var x = setInterval(function() {
 }, 1000);
 
 }
+=======
+>>>>>>> 43950baa27bf4d9d80008f31d78fbd3c9bd23977
