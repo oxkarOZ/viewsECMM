@@ -107,6 +107,7 @@ function clearCart(){
 	
 }
 
+<<<<<<< HEAD
 function cleanCartLocalStorage(){
 	localStorage.removeItem("cocoCart");
 	
@@ -114,6 +115,28 @@ function cleanCartLocalStorage(){
 
 
 
+=======
+function loadCartProducts(){
+	
+	clearCart();
+	cartCount = 0;
+	cartData = $();
+	cartCards= $();
+	cartAmount = 0;
+	cartData = getCart();
+	if(cartData){
+		cartData.forEach(function(item, i){
+			cartCards = cartCards.add(loadCart(item));
+		});
+		$('#cartProducts').prepend(cartCards);
+		$('#cartSubTotal').append('<span id="subtotal"> $'+cartAmount+'</span>');
+		$('#cartCountLabel').append('<span id="cartCount">'+cartCount+'</span>');
+		
+		
+	}
+}
+
+>>>>>>> 43950baa27bf4d9d80008f31d78fbd3c9bd23977
 function deleteCartProduct(product){
 	//$('#entry-'+product).remove();
 	if(localStorage.length){
