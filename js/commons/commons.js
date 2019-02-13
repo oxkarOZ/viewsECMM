@@ -106,7 +106,6 @@ function clearCart(){
 	$('#cartSubTotal').children('#subtotal').remove();
 	
 }
-
 function cleanCartLocalStorage(){
 	localStorage.removeItem("cocoCart");
 	
