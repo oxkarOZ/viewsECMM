@@ -21,11 +21,15 @@
     <link rel="stylesheet" media="screen" href="css/vendor.min.css">
     <!-- Main Template Styles-->
     <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script>
     <!-- Modernizr-->
     <script src="js/modernizr.min.js"></script>
+    <script src="js/checkout/checkoutShipping.js"></script>
   </head>
   <!-- Body-->
-  <body>
+  <body onload="loadShippingOptions()">
     <!-- Header-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="site-header navbar-sticky">
@@ -517,84 +521,11 @@
                   <th>Handling fee</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="courier" name="shipping-method" checked>
-                      <label class="custom-control-label" for="courier"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">Courier</span><br><span class="text-muted text-sm">All Addresses(default zone), United States & Canada</span></td>
-                  <td class="align-middle">2 - 4 days</td>
-                  <td class="align-middle">$26.50</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="local" name="shipping-method">
-                      <label class="custom-control-label" for="local"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">Local Shipping</span><br><span class="text-muted text-sm">All Addresses(default zone), United States & Canada</span></td>
-                  <td class="align-middle">up to one week</td>
-                  <td class="align-middle">$10.00</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="flat" name="shipping-method">
-                      <label class="custom-control-label" for="flat"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-darkm">Flat Rate</span><br><span class="text-muted text-sm">All Addresses(default zone)</span></td>
-                  <td class="align-middle">5 - 7 days</td>
-                  <td class="align-middle">$33.85</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="ups" name="shipping-method">
-                      <label class="custom-control-label" for="ups"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">UPS Ground Shipping</span><br><span class="text-muted text-sm">All Addresses(default zone)</span></td>
-                  <td class="align-middle">4 - 6 days</td>
-                  <td class="align-middle">$18.00</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="pickup" name="shipping-method">
-                      <label class="custom-control-label" for="pickup"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">Local Pickup from store</span><br><span class="text-muted text-sm">All Addresses(default zone)</span></td>
-                  <td class="align-middle">&mdash;</td>
-                  <td class="align-middle">$0.00</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="locker" name="shipping-method">
-                      <label class="custom-control-label" for="locker"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">Pick Up at Unishop Locker</span><br><span class="text-muted text-sm">All Addresses(default zone), United States & Canada</span></td>
-                  <td class="align-middle">&mdash;</td>
-                  <td class="align-middle">$9.99</td>
-                </tr>
-                <tr>
-                  <td class="align-middle">
-                    <div class="custom-control custom-radio mb-0">
-                      <input class="custom-control-input" type="radio" id="global" name="shipping-method">
-                      <label class="custom-control-label" for="global"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-gray-dark">Unishop Global Export</span><br><span class="text-muted text-sm">All Addresses(default zone), outside United States</span></td>
-                  <td class="align-middle">3 - 4 days;</td>
-                  <td class="align-middle">$25.00</td>
-                </tr>
+              <tbody id="shippingOptions">
+                
+                
+                
+                
               </tbody>
             </table>
           </div>
@@ -686,8 +617,6 @@
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="icon-chevron-up"></i></a>
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    
   </body>
 </html>
