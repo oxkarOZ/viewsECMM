@@ -1,18 +1,7 @@
 
-function getUrlParameter(sParam) {
-	var sPageURL = window.location.search.substring(1),
-	    sURLVariables = sPageURL.split('&'),
-	    sParameterName,
-	    i;
-
-	for ( i = 0; i < sURLVariables.length; i++) {
-		sParameterName = sURLVariables[i].split('=');
-
-		if (sParameterName[0] === sParam) {
-			return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-		}
-	}
-};
+$(function() {
+	loadCartProducts();
+});
 
 /**
  * Función para agregar productos al carrito de compras
@@ -90,6 +79,22 @@ function loadCart(cardData){
 	return $(cartTemplate.join(''));
 }
 
+function loadCart2(cardData){
+	var cartTemplate = [
+		'<div class="entry" id="entry2-'+cardData.product.productId+'">',
+		'<div class="entry-thumb">',
+		'<a href="shop-single.html?product='+cardData.product.productId+'"><img src="'+cardData.product.images[0].imageUrl+'" alt="Product"></a>',
+		'</div>',
+		'<div class="entry-content">',
+		'<h4 class="entry-title"><a href="shop-single.html?product='+cardData.product.productId+'">'+cardData.product.productName+'</a></h4><span class="entry-meta">'+cardData.quantity+' x $'+cardData.product.productPrice+'</span>',
+		'</div>',
+		'<div class="entry-delete" onclick="deleteCartProduct('+cardData.product.productId+')">',
+		'<i class="icon-x"></i>',
+		'</div>'
+	];	
+	return $(cartTemplate.join(''));
+}
+
 
 function getCart(){
     return JSON.parse(localStorage.getItem('cocoCart'));
@@ -104,16 +109,26 @@ function clearCart(){
 	$('#cartCountLabel').children('#cartCount').remove();
 	$('#cartProducts').children('.entry').remove();
 	$('#cartSubTotal').children('#subtotal').remove();
+
+	$('#cartCountLabel2').children('#cartCount2').remove();
+	$('#cartProducts2').children('.entry').remove();
+	$('#cartSubTotal2').children('#subtotal2').remove();
 	
 }
+function cleanCartLocalStorage(){
+	localStorage.removeItem("cocoCart");
+	
+}
+
 
 function loadCartProducts(){
 	
 	clearCart();
 	cartCount = 0;
-	cartData = $();
-	cartCards= $();
 	cartAmount = 0;
+	
+	cartData = $();
+	cartCards= $();	
 	cartData = getCart();
 	if(cartData){
 		cartData.forEach(function(item, i){
@@ -122,13 +137,26 @@ function loadCartProducts(){
 		$('#cartProducts').prepend(cartCards);
 		$('#cartSubTotal').append('<span id="subtotal"> $'+cartAmount+'</span>');
 		$('#cartCountLabel').append('<span id="cartCount">'+cartCount+'</span>');
-		
+				
+	}
+
+	cartData2 = $();
+	cartCards2= $();	
+	cartData2 = getCart();
+	if(cartData2){
+		cartData2.forEach(function(item, i){
+			cartCards2 = cartCards2.add(loadCart2(item));
+		});
+
+		$('#cartProducts2').prepend(cartCards2);
+		$('#cartSubTotal2').append('<span id="subtotal2"> $'+cartAmount+'</span>');
+		$('#cartCountLabel2').append('<span id="cartCount2">'+cartCount+'</span>');
 		
 	}
+
 }
 
 function deleteCartProduct(product){
-	//$('#entry-'+product).remove();
 	if(localStorage.length){
 		var cocoCart = localStorage.getItem('cocoCart');
 		var productList = JSON.parse(cocoCart);
@@ -145,3 +173,19 @@ function deleteCartProduct(product){
 		refreshCart();
 	}
 }
+
+function getUrlParameter(sParam) {
+	var sPageURL = window.location.search.substring(1),
+	    sURLVariables = sPageURL.split('&'),
+	    sParameterName,
+	    i;
+
+	for ( i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+		}
+	}
+};
+

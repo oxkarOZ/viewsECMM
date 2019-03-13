@@ -21,8 +21,18 @@
     <link rel="stylesheet" media="screen" href="css/vendor.min.css">
     <!-- Main Template Styles-->
     <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+     <link rel="stylesheet" media="screen" href="css/estilosGenerales.css">
     <!-- Modernizr-->
     <script src="js/modernizr.min.js"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script> 
+    <script src="js/card.min.js"></script>      
+    <!-- Own JavaScript -->
+   
+    
+    <script src="js/checkout/checkout.js"></script>
+     <script src="js/commons/commons.js"></script>
+
   </head>
   <!-- Body-->
   <body>
@@ -46,39 +56,23 @@
               <p class="text-xs text-muted mb-2">New customer?&nbsp;<a href="account-login.html">Register</a></p>
             </div>
           </div>
-          <div class="toolbar-item"><a href="cart.html">
-              <div><span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label">3   </span></span><span class="text-label">Cart</span></div></a>
-            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile">
+          <div class="toolbar-item">
+            <a href="cart.html">
+            <div>
+              <span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label" id="cartCountLabel"><span id="cartCount">0</span></span></span><span class="text-label">Cart</span>
+            </div></a>
+            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile" id="cartProducts">
               <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Canon EOS M50 Mirrorless Camera</a></h4><span class="entry-meta">1 x $910.00</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/05.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Apple iPhone X 256 GB Space Gray</a></h4><span class="entry-meta">1 x $1,450.00</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/06.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">HP LaserJet Pro Laser Printer</a></h4><span class="entry-meta">1 x $188.50</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
+              
               <div class="text-right">
-                <p class="text-gray-dark py-2 mb-0"><span class='text-muted'>Subtotal:</span> &nbsp;$2,548.50</p>
+                <p class="text-gray-dark py-2 mb-0" id="cartSubTotal">
+                  <span class='text-muted'>Subtotal:</span> 
+                </p>
               </div>
               <div class="d-flex">
-                <div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="cart.html">Expand Cart</a></div>
-                <div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a></div>
+                <div class="pl-4 w-100">
+                  <a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a>
+                </div>
               </div>
             </div>
           </div>
@@ -437,48 +431,32 @@
         </nav>
         <!-- Toolbar ( Put toolbar here only if you enable sticky navbar )-->
         <div class="toolbar">
-          <div class="toolbar-inner">
-            
-            <div class="toolbar-item"><a href="cart.html">
-                <div><span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label">3   </span></span><span class="text-label">Cart</span></div></a>
-              <div class="toolbar-dropdown cart-dropdown widget-cart">
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">Canon EOS M50 Mirrorless Camera</a></h4><span class="entry-meta">1 x $910.00</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/05.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">Apple iPhone X 256 GB Space Gray</a></h4><span class="entry-meta">1 x $1,450.00</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/06.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">HP LaserJet Pro Laser Printer</a></h4><span class="entry-meta">1 x $188.50</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-dark py-2 mb-0"><span class='text-muted'>Subtotal:</span> &nbsp;$2,548.50</p>
-                </div>
-                <div class="d-flex">
-                  <div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="cart.html">Expand Cart</a></div>
-                  <div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a></div>
+          <div class="toolbar-inner">            
+            <div class="toolbar-item">
+            <a href="cart.html">
+            <div>
+              <span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label" id="cartCountLabel2"><span id="cartCount2">0</span></span></span><span class="text-label">Cart</span>
+            </div></a>
+            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile" id="cartProducts2">
+              <!-- Entry-->              
+              <div class="text-right">
+                <p class="text-gray-dark py-2 mb-0" id="cartSubTotal2">
+                  <span class='text-muted'>Subtotal:</span> 
+                </p>
+              </div>
+              <div class="d-flex">
+                <div class="pl-4 w-100">
+                  <a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a>
                 </div>
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
     </header>
+
+    
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
@@ -507,95 +485,22 @@
               <th>Product Name</th>
               <th class="text-center">Quantity</th>
               <th class="text-center">Subtotal</th>
-              <th class="text-center">Discount</th>
-              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+              <th class="text-center">Update Item</th>
+              <th class="text-center"><a class="btn btn-sm btn-outline-danger" onclick="clearCheckout()">Clear Cart</a></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/01.jpg" alt="Product"></a>
-                  <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">Canon EOS M50 Mirrorless Camera</a></h4><span><em>Type:</em> Mirrorless</span><span><em>Color:</em> Black</span>
-                  </div>
-                </div>
-              </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg">$910.00</td>
-              <td class="text-center text-lg">$35.00</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-x"></i></a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/02.jpg" alt="Product"></a>
-                  <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">Apple iPhone X 256 GB Space Gray</a></h4><span><em>Memory:</em> 256 GB</span><span><em>Color:</em> Space Gray</span>
-                  </div>
-                </div>
-              </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg">$1,450.00</td>
-              <td class="text-center">&mdash;</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-x"></i></a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/03.jpg" alt="Product"></a>
-                  <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">HP LaserJet Pro Laser Printer</a></h4><span><em>Type:</em> Laser</span><span><em>Color:</em> White</span>
-                  </div>
-                </div>
-              </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg">$188.50</td>
-              <td class="text-center">&mdash;</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-x"></i></a></td>
-            </tr>
+          <tbody id="idCheckoutProducts"> 
           </tbody>
         </table>
       </div>
       <div class="shopping-cart-footer">
         <div class="column">
-          <form class="coupon-form" method="post">
-            <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required>
-            <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-          </form>
         </div>
-        <div class="column text-lg"><span class="text-muted">Subtotal:&nbsp; </span><span class="text-gray-dark">$2,548.50</span></div>
+        <div class="column text-lg"><span class="text-muted">Subtotal:&nbsp; </span><span class="text-gray-dark" id="idTotalAmount"></span></div>
       </div>
       <div class="shopping-cart-footer">
         <div class="column"><a class="btn btn-outline-secondary" href="shop-grid-ls.html"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
-        <div class="column"><a class="btn btn-secondary" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-primary" href="checkout-address.html">Checkout</a></div>
+        <div class="column"><a class="btn btn-primary" href="checkout-address.html">Checkout</a></div>
       </div>
       
     </div>
@@ -654,5 +559,6 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
+
   </body>
 </html>

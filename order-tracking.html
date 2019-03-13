@@ -21,8 +21,17 @@
     <link rel="stylesheet" media="screen" href="css/vendor.min.css">
     <!-- Main Template Styles-->
     <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <link  rel="stylesheet" href="css/estilosGenerales.css">
     <!-- Modernizr-->
-    <script src="js/modernizr.min.js"></script>
+      <script src="js/modernizr.min.js"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script> 
+    <script src="js/card.min.js"></script>  
+
+
+
+    <script src="js/orderTracking/orderTracking.js"></script>
+    <script src="js/commons/commons.js"></script>
   </head>
   <!-- Body-->
   <body>
@@ -109,42 +118,27 @@
               <p class="text-xs text-muted mb-2">New customer?&nbsp;<a href="account-login.html">Register</a></p>
             </div>
           </div>
-          <div class="toolbar-item"><a href="cart.html">
-              <div><span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label">3   </span></span><span class="text-label">Cart</span></div></a>
-            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile">
+         <div class="toolbar-item">
+            <a href="cart.html">
+            <div>
+              <span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label" id="cartCountLabel"><span id="cartCount">0</span></span></span><span class="text-label">Cart</span>
+            </div></a>
+            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile" id="cartProducts">
               <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Canon EOS M50 Mirrorless Camera</a></h4><span class="entry-meta">1 x $910.00</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/05.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Apple iPhone X 256 GB Space Gray</a></h4><span class="entry-meta">1 x $1,450.00</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/06.jpg" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">HP LaserJet Pro Laser Printer</a></h4><span class="entry-meta">1 x $188.50</span>
-                </div>
-                <div class="entry-delete"><i class="icon-x"></i></div>
-              </div>
+              
               <div class="text-right">
-                <p class="text-gray-dark py-2 mb-0"><span class='text-muted'>Subtotal:</span> &nbsp;$2,548.50</p>
+                <p class="text-gray-dark py-2 mb-0" id="cartSubTotal">
+                  <span class='text-muted'>Subtotal:</span> 
+                </p>
               </div>
               <div class="d-flex">
-                <div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="cart.html">Expand Cart</a></div>
-                <div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a></div>
+                <div class="pl-4 w-100">
+                  <a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a>
+                </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
         <!-- Mobile Menu-->
         <div class="mobile-menu">
@@ -484,44 +478,26 @@
         </nav>
         <!-- Toolbar ( Put toolbar here only if you enable sticky navbar )-->
         <div class="toolbar">
-          <div class="toolbar-inner">
-            
-            <div class="toolbar-item"><a href="cart.html">
-                <div><span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label">3   </span></span><span class="text-label">Cart</span></div></a>
-              <div class="toolbar-dropdown cart-dropdown widget-cart">
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">Canon EOS M50 Mirrorless Camera</a></h4><span class="entry-meta">1 x $910.00</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/05.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">Apple iPhone X 256 GB Space Gray</a></h4><span class="entry-meta">1 x $1,450.00</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <!-- Entry-->
-                <div class="entry">
-                  <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/06.jpg" alt="Product"></a></div>
-                  <div class="entry-content">
-                    <h4 class="entry-title"><a href="shop-single.html">HP LaserJet Pro Laser Printer</a></h4><span class="entry-meta">1 x $188.50</span>
-                  </div>
-                  <div class="entry-delete"><i class="icon-x"></i></div>
-                </div>
-                <div class="text-right">
-                  <p class="text-gray-dark py-2 mb-0"><span class='text-muted'>Subtotal:</span> &nbsp;$2,548.50</p>
-                </div>
-                <div class="d-flex">
-                  <div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="cart.html">Expand Cart</a></div>
-                  <div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a></div>
+          <div class="toolbar-inner">            
+            <div class="toolbar-item">
+            <a href="cart.html">
+            <div>
+              <span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label" id="cartCountLabel2"><span id="cartCount2">0</span></span></span><span class="text-label">Cart</span>
+            </div></a>
+            <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile" id="cartProducts2">
+              <!-- Entry-->              
+              <div class="text-right">
+                <p class="text-gray-dark py-2 mb-0" id="cartSubTotal2">
+                  <span class='text-muted'>Subtotal:</span> 
+                </p>
+              </div>
+              <div class="d-flex">
+                <div class="pl-4 w-100">
+                  <a class="btn btn-primary btn-sm btn-block mb-0" href="checkout.html">Checkout</a>
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -544,32 +520,49 @@
     </div>
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-1">
-      <div class="card mb-3">
-        <div class="p-4 text-center text-white bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-medium">34VB5540K83</span></div>
+       <div class="row" id="searcherId">
+          <div class="col-lg-2 margin-bottom-1x"></div>
+          <div class="col-lg-8 margin-bottom-1x">
+            <div class="card text-center">
+               <form class="input-group" method="get">
+                  <span class="input-group-btn sizeButtonSearch">
+                    <button type="button" data-toggle="tooltip" title="Search Order" onclick="searchOrderTracking();"><i class="icon-search"></i></button>
+                  </span>
+                  <input class="form-control stylesButtonSearch" id="idOrderTrack" type="search" placeholder="Enter your order number">
+               </form>
+            </div>
+          </div>
+          <div class="col-lg-2 margin-bottom-1x"></div> 
+       </div>
+
+      <div class="card mb-3" id="detailTrackingId" style="display: none">
+        <div class="p-4 text-center text-white bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-medium" id="orderTrackingId"></span></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>Shipped Via:</span> UPS Ground</div>
-          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>Status:</span> Processing Order</div>
-          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>Expected Date:</span> Feb 26, 2018</div>
+          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>Shipped Via:&nbsp;&nbsp;</span><span id="shippedViaId"></span> </div>
+          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>Status:&nbsp;&nbsp;</span><span id="statusId"></span></div>
         </div>
+        
         <div class="card-body">
           <div class="steps flex-sm-nowrap padding-top-1x padding-bottom-1x">
-            <div class="step active"><i class="icon-shopping-bag"></i>
-              <h4 class="step-title">Confirmed Order</h4>
+           
+            <div class="step" id="enteredOrderId" ><i class="icon-shopping-bag"></i>
+              <h4 class="step-title">Entered Order</h4>
             </div>
-            <div class="step active"><i class="icon-settings"></i>
+            <div class="step" id="paymentConfirmedId"><i class="icon-dollar-sign"></i>
+              <h4 class="step-title">Payment Confirmed</h4>
+            </div>
+            <div class="step" id="processingOrderId"><i class="icon-settings"></i>
               <h4 class="step-title">Processing Order</h4>
             </div>
-            <div class="step"><i class="icon-award"></i>
-              <h4 class="step-title">Quality Check</h4>
+            <div class="step" id="orderSentId"><i class="icon-truck"></i>
+              <h4 class="step-title">Order Sent</h4>
             </div>
-            <div class="step"><i class="icon-truck"></i>
-              <h4 class="step-title">Product Dispatched</h4>
-            </div>
-            <div class="step"><i class="icon-home"></i>
+            <div class="step" id="productDeliveredId"><i class="icon-home"></i>
               <h4 class="step-title">Product Delivered</h4>
             </div>
           </div>
         </div>
+
       </div>
       <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center">
         <div class="custom-control custom-checkbox mr-3">
