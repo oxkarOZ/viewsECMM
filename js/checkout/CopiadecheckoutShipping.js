@@ -1,11 +1,12 @@
 
 var shippingOptions;
 var cardsShippingOptions = $();
+var productsReview = $();
 
 $(function() {
 	
 	
-	
+	loadShippingOptions();
 	//loadCountry();
 	/*$('#checkout-country').on('change', function() {
 		loadStates(this.value);
@@ -25,6 +26,13 @@ $(function() {
 	    		loadCP($("#checkoutzip").val());
 	    }else if(zipLenght > 5){
 	    		$("#checkoutzip").val($("#checkoutzip").val().slice(0,5));
+	    }
+	  });
+
+	$("#checkout-colony").change(function(){
+	    if($("#checkout-colony  option:selected").val()){
+	    	$('#checkout-description').removeAttr("disabled");
+	    	$("#linkTabShoppingForm").removeClass("disabled");
 	    }
 	  });
 	
@@ -70,7 +78,18 @@ $(function() {
 		},
 		success : function(element) {
 			element.closest('.form-group').removeClass('has-danger').addClass('has-success');
-			//element.closest('.form-control').removeClass('form-control-danger').addClass('form-control-success');
+
+			switch(element[0].htmlFor){
+				case 'checkoutfn':
+					$('#checkoutphone').removeAttr("disabled");
+				break;
+				case 'checkoutemail':
+					$('#checkoutcompany').removeAttr("disabled");
+					$('#checkoutzip').removeAttr("disabled");
+				break;
+
+			}
+			console.log(element[0].htmlFor);
 		}
 	});
 
@@ -79,6 +98,15 @@ $(function() {
 function loadCheckoutAddress(){
 	$("#cartSubtotal").append(getCartTotal());
 }
+
+function selectShippingOption(shippingOption, shippingCost){
+	$("#linkTabPaymentForm").removeClass("disabled");
+	$("#linkTabReviewForm").removeClass("disabled");
+	
+	saveShipping(shippingOption, shippingCost);
+	reloadOrderSummary();
+}
+
 
 function loadCountry(){
 	$('#checkout-country').find('option').remove().end().append('<option value=0>Choose country</option>').val('whatever');
@@ -144,7 +172,7 @@ function loadColony(colony){
 	if(!colony){
 		colony = 'all';
 	}
-	$('#checkout-colony').find('option').remove().end().append('<option value=0>Choose Colony</option>').val('whatever');
+	$('#checkout-colony').find('option').remove().end().append('<option>Choose Colony</option>').val('whatever');
 	$.ajax({
 		type : "GET",
 		url : 'http://localhost:8080/catalogo/colony/'+colony,
@@ -194,6 +222,8 @@ function loadShippingOptions(){
 		url : 'http://localhost:8080/shippingOptions/all',
 		success : function(respuesta) {
 			shippingOptions = respuesta;
+			cardsShippingOptions= $();
+			$('#shippingOptions').innerHTML='';
 			shippingOptions.forEach(function(item, i) {
 				cardsShippingOptions = cardsShippingOptions.add(loadShippingOption(item));
 			});
@@ -209,8 +239,8 @@ function loadShippingOption (cardData){
 	var cardShippingOptionsTemplate = [	'<tr>',
 										'<td class="align-middle">',
 										'<div class="custom-control custom-radio mb-0">',
-										'<input class="custom-control-input" type="radio" id="'+cardData.shippingOptionId+'" name="shipping-method">',
-										'<label class="custom-control-label" for="'+cardData.shippingOptionId+'"></label>',
+										'<input class="custom-control-input" type="radio" id="shipping-method-'+cardData.shippingOptionId+'" value="'+cardData.shippingOptionId+'" onclick="selectShippingOption('+cardData.shippingOptionId+','+cardData.shippingOptionPrice+')" name="shipping-method">',
+										'<label class="custom-control-label" for="shipping-method-'+cardData.shippingOptionId+'"></label>',
 										'</div>',
 										'</td>',
 										'<td class="align-middle">'+cardData.shippingOptionName+'</td>',
@@ -221,8 +251,100 @@ function loadShippingOption (cardData){
                 
 }
 
+function addProductsReview(){
+
+	$("#productsReview").empty();
+	productsReview = $();
+    
+    var cocoCart = localStorage.getItem('cocoCart');
+    var checkoutProductList = JSON.parse(cocoCart);
+
+    for (var key in checkoutProductList) {
+    		var checkoutProduct = checkoutProductList[key];
+    		  productsReview = productsReview.add(addProductReview(checkoutProduct));
+		}
+		$("#productsReview").append(productsReview);
+
+
+		var address = '';
+		address += $('#checkout-street').val()+', ';
+		address += $('#checkoutzip').val()+' ';
+		address += $('#checkout-colony option:selected').text()+' ';
+		address += $('#checkout-town option:selected').text()+' ';
+		address += $('#checkout-state option:selected').text()+', ';
+		address += $('#checkout-country option:selected').text()+'.';
+
+		$('#shippingClient').text($('#checkoutfn').val());
+		$('#shippingMail').text($('#checkoutemail').val());
+		$('#shippingAddress').text(address);
+		$('#shippingPhone').text($('#checkoutphone').val());
+		$('#subtotalReview').text(getCartTotal());
+		
+		$("#finalizarReview").show();
+
+
+}
+
+
+function addProductReview(checkoutProduct){
+	console.log(checkoutProduct);
+	var productTemplate = [
+			'<tr>',
+              '<td>',
+                '<div class="product-item"><a class="product-thumb" href="shop-single.html?product='+checkoutProduct.product.productId+'"><img src="'+checkoutProduct.product.images[0].imageUrl+'" alt="Product"></a>',
+                 '<div class="product-info">',
+                    '<h4 class="product-title"><a href="shop-single.html?product='+checkoutProduct.product.productId+'">'+checkoutProduct.product.productName+'<small>('+checkoutProduct.quantity+' x '+checkoutProduct.product.productPrice+')</small></a></h4><span><em>Categoria:</em> '+checkoutProduct.product.category.categoryName+'</span><span><em>Marca:</em> '+checkoutProduct.product.brand.brandName+'</span>',
+                  '</div>',
+                '</div>',
+              '</td>',
+              '<td class="text-center text-lg">$'+(checkoutProduct.product.productPrice*checkoutProduct.quantity)+'</td>',
+              '<td class="text-center"><a class="btn btn-outline-primary btn-sm" href="checkout.html">Edit</a></td>',
+            '</tr>'
+	];
+	return $(productTemplate.join(''));
+}
+
+function reloadOrderSummary(){
+	$('#cartSubtotal').empty();
+	$('#shippingPrice').empty();
+	$('#estimatedTax').empty();
+	$('#totalCheckout').empty();
+
+	var cartTotal = getCartTotal(),
+		shippingTotal = getShippingTotal();
+
+	var totalCheckout = cartTotal + shippingTotal;
+
+	$('#cartSubtotal').append('$ '+cartTotal);
+	$('#shippingPrice').append('$ '+shippingTotal);
+	$('#estimatedTax').append('$ 0');
+	$('#totalCheckout').append('$ '+totalCheckout);
+
+
+}
+
 function saveAddress(){
-	
+	var obj = {
+		    "fullName"	: $('#checkoutfn').val(),
+		    "email"		: $('#checkoutemail').val(),
+		    "phone"		: $('#checkoutphone').val(),
+		    "company"	: $('#checkoutcompany').val(),
+		    "zipCode"	: $('#checkoutzip').val(),
+		    "country"	: $('#checkout-country').val(),
+		    "state"		: $('#checkout-state').val(),
+		    "town"		: $('#checkout-town').val(),
+		    "colony"	: $('#checkout-colony').val(),
+		    "references": $('#checkout-description').val()
+		};
+		saveCheckoutAddress(obj);
+}
+
+function saveShipping(shippingOption, shippingCost){
+	var obj = {
+		    "shippingOption"	: shippingOption,
+		    "shippingCost"		: shippingCost
+		};
+		saveCheckoutShipping(obj);
 }
 
 function soloNumeros(e) {

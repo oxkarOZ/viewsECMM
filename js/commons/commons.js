@@ -189,3 +189,77 @@ function getUrlParameter(sParam) {
 	}
 };
 
+function getCartTotal(){
+
+	if(cartAmount){
+		return cartAmount;
+	}else{
+		return 0;
+	}
+}
+
+function getShippingTotal(){
+	var shippingCost = JSON.parse(sessionStorage.getItem('cocoCheckout')).Shipping.shippingCost;
+
+	if(shippingCost){
+		return shippingCost;
+	}else{
+		return 0;
+	}
+}
+
+function saveCheckoutAddress(address){
+
+	if (sessionStorage.length) {
+		var cocoCheckout = JSON.parse(sessionStorage.getItem('cocoCheckout'));
+		cocoCheckout.Address.fullName 	= address.fullName;
+		cocoCheckout.Address.email 		= address.email;
+		cocoCheckout.Address.phone 		= address.phone;
+		cocoCheckout.Address.company 	= address.company;
+		cocoCheckout.Address.zipCode 	= address.zipCode;
+		cocoCheckout.Address.country 	= address.country;
+		cocoCheckout.Address.state 		= address.state;
+		cocoCheckout.Address.town 		= address.town;
+		cocoCheckout.Address.colony 	= address.colony;
+		cocoCheckout.Address.references = address.references;
+		sessionStorage.setItem("cocoCheckout", JSON.stringify(cocoCheckout));
+	}else{
+		var obj = {
+			"Address": {
+			    "fullName"	: address.fullName,
+			    "email"		: address.email,
+			    "phone"		: address.phone,
+			    "company"	: address.company,
+			    "zipCode"	: address.zipCode,
+			    "country"	: address.country,
+			    "state"		: address.state,
+			    "town"		: address.town,
+			    "colony"	: address.colony,
+			    "references":address.references
+			 },
+		    "Shipping": {
+		      "shippingOption": 0,
+		      "shippingCost": 0
+		    },
+		    "Payment": 0
+		};
+
+		sessionStorage.setItem("cocoCheckout", JSON.stringify(obj));
+	}
+
+}
+
+function saveCheckoutShipping(shipping){
+
+	if (sessionStorage.length) {
+		var cocoCheckout = JSON.parse(sessionStorage.getItem('cocoCheckout'));
+		cocoCheckout.Shipping.shippingOption 	= shipping.shippingOption;
+		cocoCheckout.Shipping.shippingCost 		= shipping.shippingCost;
+		sessionStorage.setItem("cocoCheckout", JSON.stringify(cocoCheckout));
+	}
+
+}
+
+
+
+

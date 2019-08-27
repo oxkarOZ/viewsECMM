@@ -27,7 +27,7 @@
 		<script src="js/scripts.min.js"></script>
 		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
 		<script src="js/commons/commons.js"></script>
-		<script src="js/checkout/checkoutShipping.js"></script>
+		<script src="js/checkout/CopiadecheckoutShipping.js"></script>
 	</head>
 	<!-- Body-->
 	<body onload="loadCheckoutAddress()">
@@ -945,97 +945,205 @@
 			<div class="row">
 				<!-- Checkout Adress-->
 				<div class="col-xl-9 col-lg-8">
-					<div class="steps flex-sm-nowrap mb-5">
-						<a class="step active" href="checkout-address.html"> <h4 class="step-title">1. Address</h4></a><a class="step" href="checkout-shipping.html"> <h4 class="step-title">2. Shipping</h4></a><a class="step" href="checkout-payment.html"> <h4 class="step-title">3. Payment</h4></a><a class="step" href="checkout-review.html"> <h4 class="step-title">4. Review</h4></a>
-					</div>
-					<h4>Billing Address</h4>
-					<hr class="padding-bottom-1x">
-					<form id="contact-form" name="contact-form">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="form-group hass">
-									<label for="checkoutfn">Full Name</label>
-									<input class="form-control" type="text" id="checkoutfn" name="checkoutfn">
-								</div>
-							</div>
-						</div>
+					<h4 class="text-muted text-lg text-uppercase">Checkout</h4>
+          <hr class="margin-bottom-1x">
+          <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#addressForm" data-toggle="tab" role="tab">
+                <i class="icon-check-circle"></i>Address
+              </a>
+            </li>
+            <li class="nav-item"><a class="nav-link disabled" id="linkTabShoppingForm" onclick="saveAddress()" href="#shippingForm" data-toggle="tab" role="tab">Shipping</a></li>
+            <li class="nav-item"><a class="nav-link disabled" id="linkTabPaymentForm" href="#paymentForm" data-toggle="tab" role="tab">Payment</a></li>
+            <li class="nav-item"><a class="nav-link disabled" id="linkTabReviewForm" href="#reviewForm" data-toggle="tab" role="tab">Review</a></li>
 
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkoutemail">E-mail Address</label>
-									<input class="form-control" type="text" id="checkoutemail" name="checkoutemail">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkoutphone">Phone Number</label>
-									<input class="form-control" type="text" id="checkoutphone" name="checkoutphone" onkeypress="return soloNumeros(event)">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkout-company">Company</label>
-									<input class="form-control" type="text" id="checkout-company">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkoutzip">ZIP Code</label>
-									<input class="form-control" type="number" id="checkoutzip" min="0" max="99999">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkout-country">Country</label>
-									<select class="form-control" id="checkout-country" disabled>
-										<option>Choose country</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkout-state">State</label>
-									<select class="form-control" id="checkout-state" disabled>
-										<option>Choose state</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkout-town">Town</label>
-									<select class="form-control" id="checkout-town" disabled>
-										<option>Choose town</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label for="checkout-colony">Colony</label >
-									<select class="form-control" id="checkout-colony" disabled>
-										<option>Choose colony</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</form>
-					<div class="row padding-bottom-1x">
-						<div class="col-sm-12">
-							<div class="form-group">
-								<label for="checkout-address1">References/Description</label>
-								<textarea class="form-control" id="textarea-input" rows="5" placeholder="Some description"></textarea>
-							</div>
-						</div>
-					</div>
+          </ul>
+          <div class="tab-content">
+          	<div class="tab-pane fade show active" id="addressForm" role="tabpanel">
+              
+              <form id="contact-form" name="contact-form">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group hass">
+                      <label for="checkoutfn">Full Name</label>
+                      <input class="form-control" type="text" id="checkoutfn" name="checkoutfn">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkoutemail">E-mail Address</label>
+                      <input class="form-control" type="text" id="checkoutemail" name="checkoutemail">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkoutphone">Phone Number</label>
+                      <input class="form-control" type="text" id="checkoutphone" name="checkoutphone" disabled onkeypress="return soloNumeros(event)">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkoutcompany">Company</label>
+                      <input class="form-control" type="text" disabled id="checkoutcompany">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkoutzip">ZIP Code</label>
+                      <input class="form-control" type="number" id="checkoutzip" disabled min="0" max="99999">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkout-country">Country</label>
+                      <select class="form-control" id="checkout-country" disabled>
+                        <option>Choose country</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkout-state">State</label>
+                      <select class="form-control" id="checkout-state" disabled>
+                        <option>Choose state</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkout-town">Town</label>
+                      <select class="form-control" id="checkout-town" disabled>
+                        <option>Choose town</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="checkout-colony">Colony</label >
+                      <select class="form-control" id="checkout-colony" disabled>
+                        <option>Choose colony</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              	<div class="row padding-bottom-1x">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="checkout-street">Street and number</label>
+                      <input class="form-control" type="text" id="checkout-street" name="checkout-street">
+                    </div>
+                  </div>
+                </div>
+                <div class="row padding-bottom-1x">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="checkout-description">References/Description</label>
+                      <textarea class="form-control" id="checkout-description" rows="5" disabled placeholder="Some description"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="tab-pane fade" id="shippingForm" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="thead-default">
+                    <tr>
+                      <th></th>
+                      <th>Shipping method</th>
+                      <th>Delivery time</th>
+                      <th>Handling fee</th>
+                    </tr>
+                  </thead>
+                  <tbody id="shippingOptions"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="paymentForm" role="tabpanel">
+              <div class="accordion" id="accordion" role="tablist">
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h6><a class="" href="#deposito" data-toggle="collapse"><i class="socicon-douban"></i>Depósito Bancario</a></h6>
+                  </div>
+                  <div class="collapse show" id="deposito" data-parent="#accordion" role="tabpanel">
+                    <div class="card-body">
+                      
+                    	
+
+                      	<p><i>*Nota: Los datos para proceder con el deposito se mostraran despues de confirmar el pedido en el apartado 'REVIEW'</i></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- opciones de pago -->
+
+              </div>
+              
+
+            </div>
+            <div class="tab-pane fade" id="reviewForm" role="tabpanel">
+              
+              	<div class="table-responsive shopping-cart">
+              	<table class="table">
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th class="text-center">Subtotal</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="productsReview" >
+
+
+                
+                
+
+              </tbody>
+            </table>
+			</div>
+			<div class="shopping-cart-footer">
+            <div class="column"></div>
+	        <div class="column text-lg"><span class="text-muted">Subtotal:&nbsp; </span><span id="subtotalReview" class="text-gray-dark"></span></div>
+	        </div>
+
+	        <div class="row padding-top-1x mt-3">
+	        <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+              <h5>Shipping to:</h5>
+              <ul class="list-unstyled">
+                <li><span class="text-muted">Client:&nbsp; </span><span id="shippingClient"></span></li>
+                <li><span class="text-muted">Mail:&nbsp; </span><span id="shippingMail"></span></li>
+                <li><span class="text-muted">Address:&nbsp; </span><span id="shippingAddress"></span></li>
+                <li><span class="text-muted">Phone:&nbsp; </span><span id="shippingPhone"></span></li>
+              </ul>
+            </div>
+            <div class="col-sm-5">
+              <h5>Payment method:</h5>
+              <ul class="list-unstyled">
+                <li><span class="text-muted">&nbsp; </span>Depósito Bancario</li>
+              </ul>
+            </div>
+          </div>
+
+            </div>  
+          </div>
+					
+					
+					
 					<div class="d-flex justify-content-between paddin-top-1x mt-4">
 						<a class="btn btn-outline-secondary" href="cart.html"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Back To Cart</span></a>
-						<a class="btn btn-primary" onclick="validate()" href="checkout-shipping.html"><span class="hidden-xs-down">Continue&nbsp;</span><i class="icon-arrow-right"></i></a>
+						<a class="btn btn-primary" id="finalizarReview" style="display: none;" onclick="validate()" href="checkout-shipping.html"><span class="hidden-xs-down">Finalizar&nbsp;</span></a>
 					</div>
 				</div>
 				<!-- Sidebar          -->
@@ -1052,15 +1160,15 @@
 								</tr>
 								<tr>
 									<td>Shipping:</td>
-									<td class="text-gray-dark">$26.50</td>
+									<td class="text-gray-dark" id="shippingPrice">$0</td>
 								</tr>
 								<tr>
 									<td>Estimated tax:</td>
-									<td class="text-gray-dark">$9.72</td>
+									<td class="text-gray-dark" id="estimatedTax">$0</td>
 								</tr>
 								<tr>
 									<td></td>
-									<td class="text-lg text-gray-dark">$2,584.72</td>
+									<td class="text-lg text-gray-dark" id="totalCheckout">$0</td>
 								</tr>
 							</table>
 						</section>

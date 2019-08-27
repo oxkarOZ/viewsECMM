@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script src="https://a248.e.akamai.net/secure.mlstatic.com/org-img/sdk/mercadolibre-1.0.4.js"></script>
+</head>
+<body>
+<script>
+
+MELI.init(
+    {
+        'client_id': '4294319271915940',
+        'xauth_protocol': "https://",
+        'xauth_domain': "secure.mlstatic.com",
+        'xd_url': "/org-img/sdk/xd-1.0.4.html"
+    }
+    
+);
+MELI.login(function() {
+  MELI.get("/users/me",{},resultado(data));
+});
+
+function resultado (data){
+  console.log(data);
+}
+</script>
+</body>
+</html>

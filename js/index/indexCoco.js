@@ -62,7 +62,19 @@ function cargaSlide() {
 }
 
 function loadSlide(cardData) {
-	var cardFeaturedTemplate = ['<div class="item">', '<div class="container padding-top-3x">', '<div class="row justify-content-center align-items-center">', '<div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">', '<div class="from-bottom"><img class="d-inline-block w-150 mb-4" src="img/hero-slider/logoRev.jpg" alt="Puma">', '<div class="h2 text-body mb-2 pt-1">' + cardData.product.category.categoryName + ' - ' + cardData.product.productName + '</div>', '<div class="h2 text-body mb-4 pb-1">starting at <span class="text-medium">$' + cardData.product.productPrice + '.00</span></div>', '</div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">View Offers&nbsp;<i class="icon-arrow-right"></i></a>', '</div>', '<div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/02.png" alt="Puma Backpack"></div>', '</div>', '</div>', '</div>'];
+	var cardFeaturedTemplate = ['<div class="item">', 
+								'<div class="container padding-top-3x">', 
+								'<div class="row justify-content-center align-items-center">', 
+								'<div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">', 
+								'<div class="from-bottom"><img class="d-inline-block w-150 mb-4" src="'+cardData.product.brand.brandImage+'" alt="Puma">', 
+								'<div class="h2 text-body mb-2 pt-1">' + cardData.product.category.categoryName + ' - ' + cardData.product.productName + '</div>', 
+								'<div class="h2 text-body mb-4 pb-1">starting at <span class="text-medium">$' + cardData.product.productPrice + '.00</span></div>', 
+								'</div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">View Offers&nbsp;<i class="icon-arrow-right"></i></a>', 
+								'</div>', 
+								'<div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="'+cardData.product.images[0].imageUrl+'" alt="Puma Backpack"></div>', 
+								'</div>', 
+								'</div>', 
+								'</div>'];
 	return $(cardFeaturedTemplate.join(''));
 }
 
